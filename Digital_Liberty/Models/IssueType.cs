@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 
 namespace Digital_Liberty.Models
 {
-    public enum Drug
+    public enum IssueType
     {
         Alcohol,
         Crack,
         Cocaine,
         Weed,
         Tobacco,
-        Other
+        OtherDrugs,
+        OtherIssue
 
     }
 }
