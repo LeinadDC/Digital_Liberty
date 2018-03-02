@@ -14,18 +14,19 @@ namespace Digital_Liberty.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Document { get; set; }
-        public string Idiomas { get; set; }
+        public string Language { get; set; }
         public Genre Genre { get; set; }
         public bool HasChildren { get; set; }
         public string Nationality { get; set; }
         public bool HasInsurance { get; set; }
         public bool HasGovernmentSubsidy {get;set;}
         public bool IsActive { get; set; }
-
-        public DateTime EntryDate { get; set; }
         public string LeavingReason { get; set; }
-        public virtual ICollection<Suspension> Suspensions { get; set; }
 
+        /**
+         * Esto permite tener varias fechas de ingreso y suspension.**/
+        public virtual ICollection<Entry> Entries { get; set; }
+        public virtual ICollection<Suspension> Suspensions { get; set; }
 
         /**
          * Calcular la edad como numero utilizando un
