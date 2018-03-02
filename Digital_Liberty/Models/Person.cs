@@ -8,8 +8,7 @@ namespace Digital_Liberty.Models
     public class Person
     {
         /**
-         * Propiedades básicas y necesarias de cada persona.
-         * **/
+         * Propiedades básicas y necesarias de cada persona.**/
         public int ID { get; set; }
         public string PhoneNumber { get; set; }
         public string FirstName { get; set; }
@@ -21,10 +20,11 @@ namespace Digital_Liberty.Models
         public string Nationality { get; set; }
         public bool HasInsurance { get; set; }
         public bool HasGovernmentSubsidy {get;set;}
+        public bool IsActive { get; set; }
+
         public DateTime EntryDate { get; set; }
-        public DateTime SuspensionDate { get; set; }
-        public string SuspensionReason { get; set; }
         public string LeavingReason { get; set; }
+        public virtual ICollection<Suspension> Suspensions { get; set; }
 
 
         /**
@@ -33,8 +33,7 @@ namespace Digital_Liberty.Models
         public DateTime Birthdate { get; set; }
         
         /**
-         * Propiedades relacionales necesarias.
-         * **/
+         * Propiedades relacionales necesarias.**/
         public CivilStatus CivilStatus { get; set; }
         public Province Province { get; set; }
         public Education Education { get; set; }

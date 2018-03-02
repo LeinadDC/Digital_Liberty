@@ -12,5 +12,6 @@ namespace Digital_Liberty.Models
         Doctor,
         Nurse,
         Administrator,
+        Other
     }
 }
