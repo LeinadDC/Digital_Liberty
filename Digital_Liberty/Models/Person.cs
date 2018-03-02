@@ -42,41 +42,5 @@ namespace Digital_Liberty.Models
         public Job Job { get; set; }
         public Religion Religion { get; set; }
         public virtual ICollection<PersonIssue> PersonIssues { get; set; }
-
-
-
-
-        /***
-         * Numero Telefono Y
-         * Estado Y
-         * Apellido Y
-         * Nombre Y
-         * Cedula Y
-         * Sexo Y
-         * Edad Y
-         * Nacimiento Y
-         * Estado Civil Y
-         * Hijos Y
-         * Nacionalidad Y
-         * Originiario de Y
-         * Escolaridad Y
-         * Profesion Y
-         * Oficio Y
-         * Idiomas Y
-         * Credo Y
-         * Seguro Social (si / no) Y
-         * Dia De Ingreso Y
-         * Resolución ?
-         * Vencimiento ?
-         * Subsidio Economico Y
-         * Consumo Alcohol/Crack/Cocaina/Marihuana/Tabaco/ Otro Y
-         * Fecha primer ingreso Y
-         * Fecha primera suspension Y
-         * Fecha segundo ingreso Y
-         * Fecha segunda suspension Y
-         * Tiempoy motivo Y
-         * Fecha tercer ingreso Y
-         * Motivo egreso Y
-         ***/
     }
 }
