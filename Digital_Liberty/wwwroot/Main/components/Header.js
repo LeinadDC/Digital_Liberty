@@ -28,7 +28,7 @@ export default class Header extends React.Component {
                                         <li><a href="javascript:;">Help</a></li>
                                         <li><a href="login.html"><i className="fa fa-sign-out pull-right"></i> Log Out</a></li>
                                     </ul>
-                </li>
+                            </li>
 
                                 <li role="presentation" className="dropdown">
                                     <a href="javascript:;" className="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
