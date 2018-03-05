@@ -4,11 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Digital_Liberty.Models;
 
 namespace Digital_Liberty.Controllers
 {
     public class PersonController : Controller
     {
+        ICollection<Person> personTable;
+
         // GET: Person
         public ActionResult Index()
         {
@@ -29,18 +32,21 @@ namespace Digital_Liberty.Controllers
 
         // POST: Person/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+       // [ValidateAntiForgeryToken]
+        public ActionResult Create([FromBody] Person person)
         {
             try
             {
-                // TODO: Insert Logic
+                personTable.Add(person);
+                
+                Console.Write(person);
+               
 
-                return RedirectToAction(nameof(Index));
+                return Json(person);
             }
             catch
             {
-                return View();
+                return Json("Fallo");
             }
         }
 
@@ -53,7 +59,7 @@ namespace Digital_Liberty.Controllers
         // POST: Person/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ICollection<Person> Person)
         {
             try
             {
@@ -76,7 +82,7 @@ namespace Digital_Liberty.Controllers
         // POST: Person/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, ICollection<Person> Person)
         {
             try
             {
