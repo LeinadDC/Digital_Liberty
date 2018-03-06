@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import Sidebar from './Sidebar'
-import Main from './Main'
+import Home from './Home'
 import Header from './Header'
 import Footer from './Footer'
 import UserInfo from './UserInfo'
@@ -8,8 +8,6 @@ import UserInfo from './UserInfo'
 export default class App extends React.Component {
     render() {
         return (
-            
-                <div className='container body'>
                     <div className='main_container'>
                         <div className='col-md-3 left_col'>
                             <div className='left_col scroll-view'>
@@ -23,11 +21,14 @@ export default class App extends React.Component {
                             </div>
                         </div>
                         < Header />
-                        <div className='right_col'>
-                            <Main />
-                        </div>
+                        < Home />
+                        <footer>
+                            <div className="pull-right">
+                                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                            </div>
+                            <div className="clearfix"></div>
+                        </footer>
                     </div>
-                </div>
             
         );
     }

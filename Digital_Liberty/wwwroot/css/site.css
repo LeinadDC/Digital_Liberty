@@ -574,7 +574,7 @@ body .container.body .right_col {
 }
 
 .container {
-    width: 100%;
+    width: 100% !important;
     padding: 0
 }
 
