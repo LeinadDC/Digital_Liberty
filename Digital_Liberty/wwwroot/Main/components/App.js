@@ -23,7 +23,7 @@ export default class App extends React.Component {
                         </div>
                         < Header />
                         < Main />
-                        < Home />
+                        
                         <footer>
                             <div className="pull-right">
                                 Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
