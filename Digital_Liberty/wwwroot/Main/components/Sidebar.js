@@ -11,7 +11,11 @@ export default class Sidebar extends React.Component {
                         <li><a><i className="fa fa-home"></i> Home <span className="fa fa-chevron-down"></span></a>
                             <ul className="nav child_menu">
                                 <li><a href="index.html">Dashboard</a></li>
-                                <li><a href="index2.html">Dashboard2</a></li>
+                                <li>
+                                    <NavLink to={'/fetchdata'} exact activeClassName='active'>
+                                        <span>Fetch Data</span>
+                                    </NavLink>
+                                </li>
                                 <li><a href="index3.html">Dashboard3</a></li>
                             </ul>
                         </li>
