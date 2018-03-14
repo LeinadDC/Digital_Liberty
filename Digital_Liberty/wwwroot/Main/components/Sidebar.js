@@ -16,7 +16,11 @@ export default class Sidebar extends React.Component {
                                         <span>Fetch Data</span>
                                     </NavLink>
                                 </li>
-                                <li><a href="index3.html">Dashboard3</a></li>
+                                <li>
+                                    <NavLink to={'/charts'} exact activeClassName='active'>
+                                        <span>Gráficos</span>
+                                    </NavLink>
+                                </li>
                             </ul>
                         </li>
                         <li><a><i className="fa fa-edit"></i> Forms <span className="fa fa-chevron-down"></span></a>

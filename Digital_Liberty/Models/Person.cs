@@ -35,6 +35,7 @@ namespace Digital_Liberty.Models
         
         /**
          * Propiedades relacionales necesarias.**/
+        public Referred Referred { get; set; }
         public CivilStatus CivilStatus { get; set; }
         public Province Province { get; set; }
         public Education Education { get; set; }

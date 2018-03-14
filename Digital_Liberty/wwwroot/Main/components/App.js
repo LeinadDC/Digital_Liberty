@@ -5,6 +5,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Main from './Main'
 import UserInfo from './UserInfo'
+import Chart from './Charts/Chart'
 
 export default class App extends React.Component {
     render() {
@@ -23,7 +24,7 @@ export default class App extends React.Component {
                         </div>
                         < Header />
                         < Main />
-                        
+              
                         <footer>
                             <div className="pull-right">
                                 Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
