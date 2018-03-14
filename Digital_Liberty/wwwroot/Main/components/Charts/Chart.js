@@ -17,17 +17,21 @@ export default class Chart extends React.Component {
             { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 },
         ];
         return (
-            <div>
-                <BarChart width={600} height={300} data={data}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="pv" fill="#8884d8" />
-                    <Bar dataKey="uv" fill="#82ca9d" />
-                </BarChart>
-            </div>);
+            <div className="right_col" role="main">
+                    <div className="row">
+                        <div className=" col-md-4 col-sm-4 col-xs-12">
+                            <BarChart width={600} height={300} data={data}
+                                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                                <XAxis dataKey="name" />
+                                <YAxis />
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <Tooltip />
+                                <Legend />
+                                <Bar dataKey="pv" fill="#8884d8" />
+                                <Bar dataKey="uv" fill="#82ca9d" />
+                            </BarChart>
+                         </div>
+                    </div>
+                </div>);
     }
 }
