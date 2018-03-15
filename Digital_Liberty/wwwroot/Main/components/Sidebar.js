@@ -8,20 +8,10 @@ export default class Sidebar extends React.Component {
                 <div className="menu_section">
                     <h3>General</h3>
                     <ul className="nav side-menu">
-                        <li><a><i className="fa fa-home"></i> Home <span className="fa fa-chevron-down"></span></a>
-                            <ul className="nav child_menu">
-                                <li><a href="index.html">Dashboard</a></li>
-                                <li>
-                                    <NavLink to={'/fetchdata'} exact activeClassName='active'>
-                                        <span>Fetch Data</span>
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to={'/charts'} exact activeClassName='active'>
-                                        <span>Gráficos</span>
-                                    </NavLink>
-                                </li>
-                            </ul>
+                         <li>
+                            <Link to={'/'}>
+                                <a style={{color:'white'}}><i className="fa fa-bar-chart-o"></i>Dashboard</a>
+                            </Link>
                         </li>
                         <li><a><i className="fa fa-edit"></i> Forms <span className="fa fa-chevron-down"></span></a>
                             <ul className="nav child_menu">
@@ -52,15 +42,7 @@ export default class Sidebar extends React.Component {
                                 <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                             </ul>
                         </li>
-                        <li><a><i className="fa fa-bar-chart-o"></i> Data Presentation <span className="fa fa-chevron-down"></span></a>
-                            <ul className="nav child_menu">
-                                <li><a href="chartjs.html">Chart JS</a></li>
-                                <li><a href="chartjs2.html">Chart JS2</a></li>
-                                <li><a href="morisjs.html">Moris JS</a></li>
-                                <li><a href="echarts.html">ECharts</a></li>
-                                <li><a href="other_charts.html">Other Charts</a></li>
-                            </ul>
-                        </li>
+
                         <li><a><i className="fa fa-clone"></i>Layouts <span className="fa fa-chevron-down"></span></a>
                             <ul className="nav child_menu">
                                 <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
