@@ -4,6 +4,10 @@ import AgeChart from './Charts/AgeChart';
 import ChildrenChart from './Charts/ChildrenChart';
 import NationalityChart from './Charts/NationalityChart';
 import ReligionChart from './Charts/ReligionChart';
+import ProvinceChart from './Charts/ProvinceChart';
+import ProblemChart from './Charts/ProblemChart';
+import WorkChart from './Charts/WorkChart';
+import ScholarshipChart from './Charts/ScholarshipChart';
 
 export default class Dashboardx extends React.Component {
     render() {
@@ -47,6 +51,18 @@ export default class Dashboardx extends React.Component {
                         </div>
                         <div className=" col-md-4 col-sm-12 col-xs-12">
                             <NationalityChart />
+                        </div>
+                        <div className=" col-md-12 col-sm-12 col-xs-12">
+                            <ProvinceChart />
+                        </div>
+                        <div className=" col-md-4 col-sm-12 col-xs-12">
+                            <ProblemChart />
+                        </div>
+                        <div className=" col-md-4 col-sm-12 col-xs-12">
+                            <WorkChart />
+                        </div>
+                        <div className=" col-md-4 col-sm-12 col-xs-12">
+                            <ScholarshipChart />
                         </div>
                     </div>
                 </div>);
