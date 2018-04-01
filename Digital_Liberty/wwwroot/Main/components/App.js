@@ -5,7 +5,6 @@ import Header from './Header'
 import Footer from './Footer'
 import Main from './Main'
 import UserInfo from './UserInfo'
-import Chart from './Charts/Chart'
 
 export default class App extends React.Component {
     render() {
