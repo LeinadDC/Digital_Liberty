@@ -2,18 +2,27 @@
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Brush, Legend,
     ReferenceArea, ReferenceLine, ReferenceDot, ResponsiveContainer,
-    LabelList, Label
+    LabelList, Label, RadialBarChart,RadialBar
 } from 'recharts';
 
 export default class AgeChart extends React.Component {
     render() {
         const data = [
-            { estadoCivil: 'Solter@', cantidad: 30},
-            { estadoCivil: 'Casad@', cantidad: 5},
-            { estadoCivil: 'Divorciad@', cantidad:13},
-            { estadoCivil: 'Viud@', cantidad: 3},
-            { estadoCivil: 'Unión Libre', cantidad: 20},
+            { name: '18-24', uv: 31.47, pv: 2400, fill: '#8884d8' },
+            { name: '25-29', uv: 26.69, pv: 4567, fill: '#83a6ed' },
+            { name: '30-34', uv: 15.69, pv: 1398, fill: '#8dd1e1' },
+            { name: '35-39', uv: 8.22, pv: 9800, fill: '#82ca9d' },
+            { name: '40-49', uv: 8.63, pv: 3908, fill: '#a4de6c' },
+            { name: '50+', uv: 2.63, pv: 4800, fill: '#d0ed57' },
+            { name: 'unknow', uv: 6.67, pv: 4800, fill: '#ffc658' }
         ];
+
+        const style = {
+            top: 0,
+            left: 350,
+            lineHeight: '24px'
+        };
+
         return (
             <div className="x_panel tile fixed_height_320">
                 <div className="x_title">
@@ -29,15 +38,10 @@ export default class AgeChart extends React.Component {
                 <div className="x_content">
                     <div style={{ width: '600px', height: '300px' }}>
                         <ResponsiveContainer width="80%" height="80%">
-                            <BarChart data={data}
-                                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                                <XAxis dataKey="estadoCivil" />
-                                <YAxis />
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <Tooltip />
-                                <Legend />
-                                <Bar dataKey="cantidad" fill="#8884d8" />
-                            </BarChart>
+                            <RadialBarChart width={500} height={300} cx={150} cy={150} innerRadius={20} outerRadius={140} barSize={10} data={data}>
+                                <RadialBar minAngle={15} label background clockWise={true} dataKey='uv' />
+                                <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' wrapperStyle={style} />
+                            </RadialBarChart>
                         </ResponsiveContainer>
                     </div >
                 </div>
