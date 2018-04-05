@@ -15,7 +15,7 @@ namespace Digital_Liberty.Models
         public string LastName { get; set; }
         public string Document { get; set; }
         public string Language { get; set; }
-        public Genre Genre { get; set; }
+        public string Genre { get; set; }
         public bool HasChildren { get; set; }
         public string Nationality { get; set; }
         public bool HasInsurance { get; set; }
@@ -35,13 +35,13 @@ namespace Digital_Liberty.Models
         
         /**
          * Propiedades relacionales necesarias.**/
-        public Referred Referred { get; set; }
-        public CivilStatus CivilStatus { get; set; }
-        public Province Province { get; set; }
-        public Education Education { get; set; }
-        public Profession Profession { get; set; }
-        public Job Job { get; set; }
-        public Religion Religion { get; set; }
+        public string Referred { get; set; }
+        public string CivilStatus { get; set; }
+        public string Province { get; set; }
+        public string Education { get; set; }
+        public string Profession { get; set; }
+        public string Job { get; set; }
+        public string Religion { get; set; }
         public virtual ICollection<PersonIssue> PersonIssues { get; set; }
     }
 }

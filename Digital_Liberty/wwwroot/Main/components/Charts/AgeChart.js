@@ -13,8 +13,7 @@ export default class AgeChart extends React.Component {
             { name: '30-34', uv: 15.69, pv: 1398, fill: '#8dd1e1' },
             { name: '35-39', uv: 8.22, pv: 9800, fill: '#82ca9d' },
             { name: '40-49', uv: 8.63, pv: 3908, fill: '#a4de6c' },
-            { name: '50+', uv: 2.63, pv: 4800, fill: '#d0ed57' },
-            { name: 'unknow', uv: 6.67, pv: 4800, fill: '#ffc658' }
+            { name: '50+', uv: 2.63, pv: 4800, fill: '#d0ed57' }
         ];
 
         const style = {
@@ -38,9 +37,10 @@ export default class AgeChart extends React.Component {
                 <div className="x_content">
                     <div style={{ width: '600px', height: '300px' }}>
                         <ResponsiveContainer width="80%" height="80%">
-                            <RadialBarChart width={500} height={300} cx={150} cy={150} innerRadius={20} outerRadius={140} barSize={10} data={data}>
-                                <RadialBar minAngle={15} label background clockWise={true} dataKey='uv' />
-                                <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' wrapperStyle={style} />
+                            <RadialBarChart width={730} height={250} innerRadius="10%" outerRadius="80%" data={data} startAngle={180} endAngle={0}>
+                                <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='uv' />
+                                <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
+                                <Tooltip />
                             </RadialBarChart>
                         </ResponsiveContainer>
                     </div >

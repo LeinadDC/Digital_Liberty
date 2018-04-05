@@ -16,7 +16,7 @@ export default class Header extends React.Component {
                                 <a href="javascript:;" className="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     <img src="images/img.jpg" alt="" />John Doe
                     <span className=" fa fa-angle-down"></span>
-                  </a>
+                                 </a>
                                     <ul className="dropdown-menu dropdown-usermenu pull-right">
                                         <li><a href="javascript:;"> Profile</a></li>
                                         <li>

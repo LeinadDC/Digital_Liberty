@@ -35,7 +35,6 @@ export default class Dashboardx extends React.Component {
                         <div className="count">2,315</div>
                     </div>
                 </div>
-
                     <div className="row">
                         <div className=" col-md-6 col-sm-12 col-xs-12">
                             <CivilChart />
