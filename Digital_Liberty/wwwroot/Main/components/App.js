@@ -22,7 +22,9 @@ export default class App extends React.Component {
                             </div>
                         </div>
                         < Header />
-                        < Main />
+                        <div className="right_col" role="main">
+                            < Main />
+                        </div>
               
                         <footer>
                             <div className="clearfix"></div>

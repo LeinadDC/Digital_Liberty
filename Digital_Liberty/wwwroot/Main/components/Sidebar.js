@@ -19,7 +19,7 @@ export default class Sidebar extends React.Component {
                              </Link>
                          </li>
                          <li>
-                             <Link to={'/fetchdata'}>
+                             <Link to={'/list'}>
                                  <a style={{ color: 'white' }}><i className="fa fa-table"></i>Lista de beneficiarios</a>
                              </Link>
                          </li>

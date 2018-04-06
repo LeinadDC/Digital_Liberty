@@ -8,9 +8,17 @@ using Digital_Liberty.Models;
 
 namespace Digital_Liberty.Controllers
 {
+    [Route("apiv2/[controller]")]
     public class PersonController : Controller
     {
-        ICollection<Person> personTable;
+        List<Person> personTable = new List<Person>();
+        Person persona = new Person()
+        {
+            PhoneNumber = "1112222",
+            Document = "4444444",
+            IsActive = false,
+            FirstName = "Daniel"
+        };
 
         // GET: Person
         public ActionResult Index()
@@ -28,6 +36,14 @@ namespace Digital_Liberty.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<Person> BeneficiariesList()
+        {
+            personTable.Add(persona);
+            personTable.AsEnumerable();
+            return personTable;
         }
 
         // POST: Person/Create
