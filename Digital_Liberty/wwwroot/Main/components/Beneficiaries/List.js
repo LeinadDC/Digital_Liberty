@@ -9,7 +9,7 @@ export default class List extends React.Component {
     }
 
     componentDidMount() {
-        fetch('apiv2/Person/BeneficiariesList')
+        fetch('api/People/GetBeneficiarios')
             .then(response => response.json())
             .then(data => {
                 this.setState({ beneficiaries: data, loading: false });
