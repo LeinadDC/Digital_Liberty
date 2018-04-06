@@ -19,6 +19,13 @@ namespace Digital_Liberty.Controllers
             IsActive = false,
             FirstName = "Daniel"
         };
+        Person persona2 = new Person()
+        {
+            PhoneNumber = "1112222",
+            Document = "4444445",
+            IsActive = false,
+            FirstName = "Moises"
+        };
 
         // GET: Person
         public ActionResult Index()
@@ -42,6 +49,7 @@ namespace Digital_Liberty.Controllers
         public IEnumerable<Person> BeneficiariesList()
         {
             personTable.Add(persona);
+            personTable.Add(persona2);
             personTable.AsEnumerable();
             return personTable;
         }

@@ -1,14 +1,15 @@
 ﻿import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
+import Detail from './Detail';
 
 export default class List extends React.Component {
     constructor() {
         super();
-        this.state = { beneficiaries: [], loading: true };
+        this.state = { beneficiaries: [], loading: true, detalles : false, document: 'empty' };
     }
 
     componentDidMount() {
-        fetch('api/SampleData/WeatherForecasts')
+        fetch('apiv2/Person/BeneficiariesList')
             .then(response => response.json())
             .then(data => {
                 this.setState({ beneficiaries: data, loading: false });
@@ -18,30 +19,37 @@ export default class List extends React.Component {
     render() {
 
         const columns = [{
-            dataField: 'dateFormatted',
+            dataField: 'firstName',
             text: 'Nombre Completo'
         }, {
-                dataField: 'temperatureC',
+                dataField: 'document',
             text: 'Identificacion'
         }, {
-                dataField: 'temperatureF',
+                dataField: 'isActive',
             text: 'Está Activo'
         }, {
-                dataField: 'summary',
-            text: 'Nombre'
+                dataField: 'phoneNumber',
+            text: 'Telefono'
         }];
 
-        let contents = this.state.loading ? <p><em>Loading...</em></p>
-            : List.renderTable(this.state.beneficiaries, columns);
+        const rowEvents = {
+            onClick: (e, row, rowIndex) => {
+                this.setState({detalles: true,document: row.document});
+            }
+        };
 
-        return <div>
+        let contents = this.state.loading ? <p><em>Loading...</em></p>
+            : List.renderTable(this.state.beneficiaries, columns, rowEvents);
+
+        return (<div>
+            {this.state.detalles ? <Detail document={this.state.document}/> : null}
             <h1>Lista Beneficiarios</h1>
             {contents}
-        </div>;
+        </div>);
     }
 
-    static renderTable(beneficiaries, columns) {
+    static renderTable(beneficiaries, columns, rowEvents) {
         return (
-            <BootstrapTable keyField='dateFormatted' data={beneficiaries} columns={columns} />);
+            <BootstrapTable keyField='document' data={beneficiaries} columns={columns} rowEvents={rowEvents} />);
     }
 }
