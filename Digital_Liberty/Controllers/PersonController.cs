@@ -22,7 +22,7 @@ namespace Digital_Liberty.Controllers
         Person persona2 = new Person()
         {
             PhoneNumber = "1112222",
-            Document = "4444445",
+            Document = "4444447",
             IsActive = false,
             FirstName = "Moises"
         };

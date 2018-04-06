@@ -20,7 +20,7 @@ namespace Digital_Liberty.Controllers
             _context = context;
         }
 
-        // GET: api/People
+        // GET: api/People/Act
         [HttpGet("[action]")]
         public IEnumerable<Person> GetBeneficiarios()
         {
