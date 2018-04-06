@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Serialization;
+using Digital_Liberty.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Digital_Liberty
 {
@@ -29,6 +32,8 @@ namespace Digital_Liberty
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+             services.AddDbContext<DatabaseContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
