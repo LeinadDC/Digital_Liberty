@@ -5,7 +5,8 @@ import Detail from './Detail';
 export default class List extends React.Component {
     constructor() {
         super();
-        this.state = { beneficiaries: [], loading: true, detalles : false, document: 'empty' };
+        this.state = {
+            beneficiaries: [], loading: true, detalles: false, document: 'empty', user: {} };
     }
 
     componentDidMount() {
@@ -34,7 +35,12 @@ export default class List extends React.Component {
 
         const rowEvents = {
             onClick: (e, row, rowIndex) => {
-                this.setState({detalles: true,document: row.document});
+                const fetchUrl = 'api/People/' + row.document;
+                fetch(fetchUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.setState({ detalles: true, document: row.document, user: data});
+                    });
             }
         };
 
@@ -42,7 +48,7 @@ export default class List extends React.Component {
             : List.renderTable(this.state.beneficiaries, columns, rowEvents);
 
         return (<div>
-            {this.state.detalles ? <Detail document={this.state.document}/> : null}
+            {this.state.detalles ? <Detail user={this.state.user}/> : null}
             <h1>Lista Beneficiarios</h1>
             {contents}
         </div>);

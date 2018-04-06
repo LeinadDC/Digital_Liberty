@@ -29,14 +29,14 @@ namespace Digital_Liberty.Controllers
 
         // GET: api/People/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPerson([FromRoute] int id)
+        public async Task<IActionResult> GetPerson([FromRoute] string id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.ID == id);
+            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.Document == id);
 
             if (person == null)
             {
