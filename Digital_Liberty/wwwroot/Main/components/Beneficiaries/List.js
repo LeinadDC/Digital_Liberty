@@ -9,7 +9,7 @@ export default class List extends React.Component {
     }
 
     componentDidMount() {
-        fetch('apiv2/People/BeneficiariesList')
+        fetch('apiv2/Person/BeneficiariesList')
             .then(response => response.json())
             .then(data => {
                 this.setState({ beneficiaries: data, loading: false });
@@ -25,8 +25,8 @@ export default class List extends React.Component {
                 dataField: 'document',
             text: 'Identificacion'
         }, {
-                dataField: 'language',
-            text: 'Lenguaje'
+                dataField: 'isActive',
+            text: 'Está Activo'
         }, {
                 dataField: 'phoneNumber',
             text: 'Telefono'
