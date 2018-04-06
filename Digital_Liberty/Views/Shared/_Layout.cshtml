@@ -6,10 +6,12 @@
     <title>@ViewData["Title"] - Watch</title>
     <base href="~/" />
 
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 <body>
     @RenderBody()
 
+    <script src="~/dist/bundle.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
