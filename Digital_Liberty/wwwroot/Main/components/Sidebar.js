@@ -8,6 +8,11 @@ export default class Sidebar extends React.Component {
                 <div className="menu_section">
                     <h3>General</h3>
                     <ul className="nav side-menu">
+                        <li>
+                            <Link to={'/login'}>
+                                <a style={{ color: 'white' }}><i className="fa fa-bar-chart-o"></i>Log</a>
+                            </Link>
+                        </li>
                          <li>
                             <Link to={'/'}>
                                 <a style={{color:'white'}}><i className="fa fa-bar-chart-o"></i>Dashboard</a>

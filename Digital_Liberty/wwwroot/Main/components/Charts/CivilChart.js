@@ -19,7 +19,6 @@ export default class CivilChart extends React.Component {
             .then(data => {
                 this.setState({ civilstatus: data, loading: false });
             });
-        alert(this.state.civilstatus);
             
     }
 
