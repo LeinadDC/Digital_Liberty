@@ -35,105 +35,153 @@ namespace Digital_Liberty.Controllers
             return Json(groupedStatus);
         }
 
-        // GET: api/People/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetPerson([FromRoute] string id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.Document == id);
-
-            if (person == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(person);
-        }
-        // GET: api/People/5
+        // GET: api/People/Act
         [HttpGet("[action]")]
-        public async Task<IActionResult> Test()
+        public JsonResult GetHasChildren()
         {
-            return View();
-        }
-
-        // PUT: api/People/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPerson([FromRoute] int id, [FromBody] Person person)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != person.ID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(person).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PersonExists(id))
+            var groupedHasChildren = _context.Beneficiarios.GroupBy(c => c.HasChildren)
+                .Select(g => new
                 {
-                    return NotFound();
-                }
-                else
+                    name = g.Key,
+                    count = g.Count(),
+                }).
+                OrderBy(c => c.name);
+            return Json(groupedHasChildren);
+        }
+
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetReferred()
+        {
+            var groupedRef = _context.Beneficiarios.GroupBy(c => c.Referred)
+                .Select(g => new
                 {
-                    throw;
-                }
-            }
+                    name = g.Key,
+                    count = g.Count(),
+                }).
+                OrderBy(c => c.name);
 
-            return NoContent();
+            return Json(groupedRef);
         }
 
-        // POST: api/People
-        [HttpPost]
-        public async Task<IActionResult> PostPerson([FromBody] Person person)
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetNationalityCount()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var grupedNationality = _context.Beneficiarios.GroupBy(c => c.Nationality)
+                .Select(g => new
+                {
+                    name = g.Key,
+                    count = g.Count(),
+                }).
+                OrderBy(c => c.name);
 
-            _context.Beneficiarios.Add(person);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetPerson", new { id = person.ID }, person);
+            return Json(grupedNationality);
         }
 
-        // DELETE: api/People/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePerson([FromRoute] int id)
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetProvincesCount()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var groupedProvinces = _context.Beneficiarios.GroupBy(c => c.Province)
+                .Select(g => new
+                {
+                    name = g.Key,
+                    count = g.Count(),
+                }).
+                OrderBy(c => c.name);
 
-            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.ID == id);
-            if (person == null)
-            {
-                return NotFound();
-            }
-
-            _context.Beneficiarios.Remove(person);
-            await _context.SaveChangesAsync();
-
-            return Ok(person);
+            return Json(groupedProvinces);
         }
 
-        private bool PersonExists(int id)
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetIssuesCount()
         {
-            return _context.Beneficiarios.Any(e => e.ID == id);
+            var groupedIssues = _context.Problemas.GroupBy(c => c.IssueType)
+                .Select(g => new
+                {
+                    name = g.Key,
+                    count = g.Count(),
+                }).
+                OrderBy(c => c.name);
+
+            return Json(groupedIssues);
+        }
+
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetWorkTypeCount()
+        {
+            var groupedStatus = _context.Beneficiarios.GroupBy(c => c.Job)
+                .Select(g => new
+                {
+                    name = g.Key,
+                    count = g.Count(),
+                }).
+                OrderBy(c => c.name);
+
+            return Json(groupedStatus);
+        }
+
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetAcademicGradeCount()
+        {
+            var groupedStatus = _context.Beneficiarios.GroupBy(c => c.Education)
+                .Select(g => new
+                {
+                    name = g.Key,
+                    count = g.Count(),
+                }).
+                OrderBy(c => c.name);
+
+            return Json(groupedStatus);
+        }
+
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetTotalPeople()
+        {
+            var count = _context.Beneficiarios.Count();
+
+            return Json(count);
+        }
+
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetActiveCount()
+        {
+            var count = _context.Beneficiarios.Count(x => x.IsActive == "Si");
+
+            return Json(count);
+        }
+
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetInactiveCount()
+        {
+            var count = _context.Beneficiarios.Count(x => x.IsActive == "No");
+
+            return Json(count);
+        }
+
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetMaleCount()
+        {
+            var count = _context.Beneficiarios.Count(x => x.Genre == "Masculino");
+
+            return Json(count);
+        }
+        // GET: api/People/Act
+        [HttpGet("[action]")]
+        public JsonResult GetFemaleCount()
+        {
+            var count = _context.Beneficiarios.Count(x => x.Genre == "Femenino");
+
+            return Json(count);
         }
     }
 }

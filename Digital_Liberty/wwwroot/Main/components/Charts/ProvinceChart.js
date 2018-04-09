@@ -6,18 +6,37 @@ import {
 } from 'recharts';
 
 export default class ProvinceChart extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            civilstatus: [], loading: true
+        };
+    }
+
+    componentDidMount() {
+        fetch('api/Chart/GetProvincesCount')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ civilstatus: data, loading: false });
+            });
+
+    }
+
     render() {
-        const data = [
-            { estadoCivil: 'Solter@', cantidad: 30},
-            { estadoCivil: 'Casad@', cantidad: 5},
-            { estadoCivil: 'Divorciad@', cantidad:13},
-            { estadoCivil: 'Viud@', cantidad: 3},
-            { estadoCivil: 'Unión Libre', cantidad: 20},
-        ];
+        const data = this.state.civilstatus;
+        let contents = this.state.loading ? <p><em>Loading...</em></p>
+            : ProvinceChart.renderChart(data);
+
+        return (<div>
+            {contents}
+        </div>);
+    }
+
+    static renderChart(data) {
         return (
             <div className="x_panel tile fixed_height_320">
                 <div className="x_title">
-                    <h2>Provincias Origen</h2>
+                    <h2>Estado civil</h2>
                     <ul className="nav navbar-right panel_toolbox">
                         <li><a className="collapse-link"><i className="fa fa-chevron-up"></i></a>
                         </li>
@@ -31,17 +50,17 @@ export default class ProvinceChart extends React.Component {
                         <ResponsiveContainer width="80%" height="80%">
                             <BarChart data={data}
                                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                                <XAxis dataKey="estadoCivil" />
+                                <XAxis dataKey="name" />
                                 <YAxis />
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <Tooltip />
                                 <Legend />
-                                <Bar dataKey="cantidad" fill="#8884d8" />
+                                <Bar dataKey="count" fill="#8884d8" />
                             </BarChart>
                         </ResponsiveContainer>
                     </div >
                 </div>
             </div>
-                    );
+        );
     }
 }

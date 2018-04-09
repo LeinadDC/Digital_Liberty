@@ -31,7 +31,10 @@ export default class DetailModal extends React.Component {
                     contentLabel="Minimal Modal Example"
                 >
                     <h1>{this.props.user.document}</h1>
-                        <button onClick={this.props.action}>Close Modal</button>
+                    <button onClick={this.props.action}>Close Modal</button>
+                    <Link to={`/edit/${this.props.user.document}`}>
+                        <button>Editar</button>
+                    </Link>
                 </ReactModal>
             </div>
         );

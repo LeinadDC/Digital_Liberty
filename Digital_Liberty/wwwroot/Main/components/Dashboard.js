@@ -3,36 +3,34 @@ import CivilChart from './Charts/CivilChart';
 import AgeChart from './Charts/AgeChart';
 import ChildrenChart from './Charts/ChildrenChart';
 import NationalityChart from './Charts/NationalityChart';
-import ReligionChart from './Charts/ReligionChart';
+import ReferredChart from './Charts/ReferredChart';
 import ProvinceChart from './Charts/ProvinceChart';
 import ProblemChart from './Charts/ProblemChart';
 import WorkChart from './Charts/WorkChart';
 import ScholarshipChart from './Charts/ScholarshipChart';
+import TotalBeneficiaries from './Dashboard/TotalBeneficiaries'
+import TotalActive from './Dashboard/TotalActive'
+import TotalInactive from './Dashboard/TotalInactive'
+import TotalMale from './Dashboard/TotalMale'
+import TotalFemale from './Dashboard/TotalFemale'
 
 export default class Dashboardx extends React.Component {
     render() {
         return (
             <div>
                     <div className="row tile_count">
-                        <div className="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
-                            <span className="count_top"><i className="fa fa-user"></i> Total Beneficiados</span>
-                            <div className="count">2500</div>
+                        <TotalBeneficiaries />
+                        <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                        <TotalActive />
                         </div>
                         <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                            <span className="count_top"><i className="fa fa-clock-o"></i>Activos</span>
-                            <div className="count green">123.50</div>
+                        <TotalInactive />
                         </div>
                         <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                            <span className="count_top"><i className="fa fa-user"></i>Inactivos</span>
-                            <div className="count red">2,500</div>
+                        <TotalMale />
                         </div>
                         <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                            <span className="count_top"><i className="fa fa-user"></i>Hombres</span>
-                            <div className="count">4,567</div>
-                        </div>
-                        <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                            <span className="count_top"><i className="fa fa-user"></i>Mujeres</span>
-                            <div className="count">2,315</div>
+                        <TotalFemale /> 
                         </div>
                     </div>
                         <div className="row">
@@ -46,7 +44,7 @@ export default class Dashboardx extends React.Component {
                                 <ChildrenChart />
                             </div>
                             <div className=" col-md-4 col-sm-12 col-xs-12">
-                                <ReligionChart />
+                                <ReferredChart />
                             </div>
                             <div className=" col-md-4 col-sm-12 col-xs-12">
                                 <NationalityChart />

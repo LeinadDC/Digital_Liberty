@@ -7,6 +7,7 @@ import Dashboard from './Dashboard'
 import List from './Beneficiaries/List'
 import SuspensionForm from './Beneficiaries/SuspensionForm'
 import Login from './Login'
+import Edit from './Beneficiaries/Edit'
 
 
 
@@ -21,6 +22,7 @@ export default class Main extends React.Component {
                     <Route path='/beneficiarios' component={List} />
                     <Route path='/suspension' component={SuspensionForm} />
                     <Route path='/login' component={Login} />
+                    <Route path="/edit/:document" component={Edit} />
                 </Switch>
             </main>);
     }

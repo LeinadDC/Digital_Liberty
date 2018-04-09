@@ -11,9 +11,10 @@ using System;
 namespace Digital_Liberty.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180409212347_ChangedChildren")]
+    partial class ChangedChildren
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,7 +74,7 @@ namespace Digital_Liberty.Migrations
 
                     b.Property<bool>("HasInsurance");
 
-                    b.Property<string>("IsActive");
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Job");
 

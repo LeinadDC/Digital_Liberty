@@ -16,11 +16,11 @@ namespace Digital_Liberty.Models
         public string Document { get; set; }
         public string Language { get; set; }
         public string Genre { get; set; }
-        public bool HasChildren { get; set; }
+        public string HasChildren { get; set; }
         public string Nationality { get; set; }
         public bool HasInsurance { get; set; }
         public bool HasGovernmentSubsidy {get;set;}
-        public bool IsActive { get; set; }
+        public string IsActive { get; set; }
         public string LeavingReason { get; set; }
 
         /**
