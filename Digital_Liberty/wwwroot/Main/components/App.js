@@ -23,7 +23,9 @@ export default class App extends React.Component {
                         </div>
                         < Header />
                         <div className="right_col" role="main">
+                            <div id="modalTest">
                             < Main />
+                            </div>
                         </div>
               
                         <footer>

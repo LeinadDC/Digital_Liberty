@@ -10,63 +10,57 @@ using Digital_Liberty.Models;
 namespace Digital_Liberty.Controllers
 {
     [Produces("application/json")]
-    [Route("api/People")]
-    public class PeopleController : Controller
+    [Route("api/Suspensions")]
+    public class SuspensionsController : Controller
     {
         private readonly DatabaseContext _context;
 
-        public PeopleController(DatabaseContext context)
+        public SuspensionsController(DatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: api/People/Act
-        [HttpGet("[action]")]
-        public IEnumerable<Person> GetBeneficiarios()
+        // GET: api/Suspensions
+        [HttpGet]
+        public IEnumerable<Suspension> GetSuspensiones()
         {
-            return _context.Beneficiarios;
+            return _context.Suspensiones;
         }
 
-        // GET: api/People/5
+        // GET: api/Suspensions/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPerson([FromRoute] string id)
+        public async Task<IActionResult> GetSuspension([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.Document == id);
+            var suspension = await _context.Suspensiones.SingleOrDefaultAsync(m => m.ID == id);
 
-            if (person == null)
+            if (suspension == null)
             {
                 return NotFound();
             }
 
-            return Ok(person);
-        }
-        // GET: api/People/5
-        [HttpGet("[action]")]
-        public async Task<IActionResult> Test()
-        {
-            return View();
+            return Ok(suspension);
         }
 
-        // PUT: api/People/5
+        // PUT: api/Suspensions/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPerson([FromRoute] int id, [FromBody] Person person)
+        public async Task<IActionResult> PutSuspension([FromRoute] int id, [FromBody] Suspension suspension)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != person.ID)
+            if (id != suspension.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(person).State = EntityState.Modified;
+            _context.Entry(suspension).State = EntityState.Modified;
 
             try
             {
@@ -74,7 +68,7 @@ namespace Digital_Liberty.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonExists(id))
+                if (!SuspensionExists(id))
                 {
                     return NotFound();
                 }
@@ -87,45 +81,45 @@ namespace Digital_Liberty.Controllers
             return NoContent();
         }
 
-        // POST: api/People
+        // POST: api/Suspensions
         [HttpPost]
-        public async Task<IActionResult> PostPerson([FromBody] Person person)
+        public async Task<IActionResult> PostSuspension([FromForm] Suspension suspension)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Beneficiarios.Add(person);
+            _context.Suspensiones.Add(suspension);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPerson", new { id = person.ID }, person);
+            return RedirectToAction("Index","Home");
         }
 
-        // DELETE: api/People/5
+        // DELETE: api/Suspensions/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePerson([FromRoute] int id)
+        public async Task<IActionResult> DeleteSuspension([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.ID == id);
-            if (person == null)
+            var suspension = await _context.Suspensiones.SingleOrDefaultAsync(m => m.ID == id);
+            if (suspension == null)
             {
                 return NotFound();
             }
 
-            _context.Beneficiarios.Remove(person);
+            _context.Suspensiones.Remove(suspension);
             await _context.SaveChangesAsync();
 
-            return Ok(person);
+            return Ok(suspension);
         }
 
-        private bool PersonExists(int id)
+        private bool SuspensionExists(int id)
         {
-            return _context.Beneficiarios.Any(e => e.ID == id);
+            return _context.Suspensiones.Any(e => e.ID == id);
         }
     }
 }

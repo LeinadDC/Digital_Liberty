@@ -10,21 +10,29 @@ using Digital_Liberty.Models;
 namespace Digital_Liberty.Controllers
 {
     [Produces("application/json")]
-    [Route("api/People")]
-    public class PeopleController : Controller
+    [Route("api/Chart")]
+    public class ChartController : Controller
     {
         private readonly DatabaseContext _context;
 
-        public PeopleController(DatabaseContext context)
+        public ChartController(DatabaseContext context)
         {
             _context = context;
         }
 
         // GET: api/People/Act
         [HttpGet("[action]")]
-        public IEnumerable<Person> GetBeneficiarios()
+        public JsonResult GetCivilStatus()
         {
-            return _context.Beneficiarios;
+            var groupedStatus = _context.Beneficiarios.GroupBy(c => c.CivilStatus)
+                .Select(g => new
+                {
+                    name = g.Key,
+                    count = g.Count(),
+                }).
+                OrderBy(c => c.name);
+
+            return Json(groupedStatus);
         }
 
         // GET: api/People/5
