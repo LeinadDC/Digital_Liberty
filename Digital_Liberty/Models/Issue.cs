@@ -11,7 +11,7 @@ namespace Digital_Liberty.Models
         public string Description { get; set; }
         public string IssueType { get; set; }
         public string PersonID { get; set; }
-        public virtual Person Personas { get; set; }
+   
 
     }
 }

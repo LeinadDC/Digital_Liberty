@@ -36,8 +36,7 @@ export default class DetailModal extends React.Component {
                         content: {
                         marginLeft:'300px',
                          }
-                    }}
-                >
+                    }}>
                     <h1>{this.props.user.document}</h1>
                     <button onClick={this.props.action}>Close Modal</button>
                     <Link to={`/edit/${this.props.user.document}`}>
