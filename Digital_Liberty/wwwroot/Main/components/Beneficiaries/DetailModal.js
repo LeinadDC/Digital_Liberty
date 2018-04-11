@@ -2,6 +2,7 @@
 import ReactModal from 'react-modal';
 import { Link, NavLink } from 'react-router-dom';
 
+
 export default class DetailModal extends React.Component {
     constructor() {
         super();
@@ -12,6 +13,8 @@ export default class DetailModal extends React.Component {
      
         this.handleCloseModal = this.handleCloseModal.bind(this);
     }
+
+
 
     componentDidMount() {
         ReactModal.setAppElement('#modalTest');
@@ -29,6 +32,11 @@ export default class DetailModal extends React.Component {
                 <ReactModal
                     isOpen={this.props.showModal}
                     contentLabel="Minimal Modal Example"
+                    style={{
+                        content: {
+                        marginLeft:'300px',
+                         }
+                    }}
                 >
                     <h1>{this.props.user.document}</h1>
                     <button onClick={this.props.action}>Close Modal</button>
