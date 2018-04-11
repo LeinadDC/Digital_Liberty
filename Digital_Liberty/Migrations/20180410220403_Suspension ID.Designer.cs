@@ -11,9 +11,10 @@ using System;
 namespace Digital_Liberty.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180410220403_Suspension ID")]
+    partial class SuspensionID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,7 +28,7 @@ namespace Digital_Liberty.Migrations
 
                     b.Property<DateTime>("EntryDate");
 
-                    b.Property<int>("PersonID");
+                    b.Property<int?>("PersonID");
 
                     b.HasKey("ID");
 
@@ -44,8 +45,6 @@ namespace Digital_Liberty.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("IssueType");
-
-                    b.Property<string>("PersonID");
 
                     b.HasKey("ID");
 
@@ -194,8 +193,7 @@ namespace Digital_Liberty.Migrations
                 {
                     b.HasOne("Digital_Liberty.Models.Person")
                         .WithMany("Entries")
-                        .HasForeignKey("PersonID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PersonID");
                 });
 
             modelBuilder.Entity("Digital_Liberty.Models.PersonEntry", b =>

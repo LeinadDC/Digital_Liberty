@@ -10,33 +10,33 @@ using Digital_Liberty.Models;
 namespace Digital_Liberty.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Suspensions")]
-    public class SuspensionsController : Controller
+    [Route("api/Entries")]
+    public class EntriesController : Controller
     {
         private readonly DatabaseContext _context;
 
-        public SuspensionsController(DatabaseContext context)
+        public EntriesController(DatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: api/Suspensions
+        
         [HttpGet]
-        public IEnumerable<Suspension> GetSuspensiones()
+        public IEnumerable<Entry> GetIngresos()
         {
-            return _context.Suspensiones;
+            return _context.Ingresos;
         }
 
-        // GET: api/Suspensions/5
+        // GET: api/Entries/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetSuspension([FromRoute] int id)
+        public async Task<IActionResult> GetEntry([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var suspension = await _context.Suspensiones.SingleOrDefaultAsync(m => m.ID == id);
+            var suspension = await _context.Ingresos.SingleOrDefaultAsync(m => m.ID == id);
 
             if (suspension == null)
             {
@@ -48,7 +48,7 @@ namespace Digital_Liberty.Controllers
 
         // PUT: api/Suspensions/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSuspension([FromRoute] int id, [FromBody] Suspension suspension)
+        public async Task<IActionResult> PutEntry([FromRoute] int id, [FromBody] Suspension suspension)
         {
             if (!ModelState.IsValid)
             {
@@ -83,14 +83,14 @@ namespace Digital_Liberty.Controllers
 
         // POST: api/Suspensions
         [HttpPost]
-        public async Task<IActionResult> PostSuspension([FromForm] Suspension suspension)
+        public async Task<IActionResult> PostEntry([FromForm] Entry entry)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             
-            _context.Suspensiones.Add(suspension);
+            _context.Ingresos.Add(entry);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index","Home");
@@ -98,20 +98,20 @@ namespace Digital_Liberty.Controllers
 
         // DELETE: api/Suspensions/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSuspension([FromRoute] int id)
+        public async Task<IActionResult> DeleteEntry([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var suspension = await _context.Suspensiones.SingleOrDefaultAsync(m => m.ID == id);
+            var suspension = await _context.Ingresos.SingleOrDefaultAsync(m => m.ID == id);
             if (suspension == null)
             {
                 return NotFound();
             }
 
-            _context.Suspensiones.Remove(suspension);
+            _context.Ingresos.Remove(suspension);
             await _context.SaveChangesAsync();
 
             return Ok(suspension);
@@ -119,7 +119,7 @@ namespace Digital_Liberty.Controllers
 
         private bool SuspensionExists(int id)
         {
-            return _context.Suspensiones.Any(e => e.ID == id);
+            return _context.Ingresos.Any(e => e.ID == id);
         }
     }
 }

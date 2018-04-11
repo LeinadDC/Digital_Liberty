@@ -24,11 +24,6 @@ export default class Sidebar extends React.Component {
                              </Link>
                          </li>
                          <li>
-                             <Link to={'/suspension'}>
-                                 <a style={{ color: 'white' }}><i className="fa fa-edit"></i>Agregar beneficiario</a>
-                             </Link>
-                         </li>
-                         <li>
                              <Link to={'/beneficiarios'}>
                                  <a style={{ color: 'white' }}><i className="fa fa-table"></i>Lista de beneficiarios</a>
                              </Link>

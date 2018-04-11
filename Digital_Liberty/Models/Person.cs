@@ -27,6 +27,7 @@ namespace Digital_Liberty.Models
          * Esto permite tener varias fechas de ingreso y suspension.**/
         public virtual ICollection<Entry> Entries { get; set; }
         public virtual ICollection<Suspension> Suspensions { get; set; }
+        public virtual ICollection<Issue> Issues { get; set; }
 
         /**
          * Calcular la edad como numero utilizando un
@@ -42,6 +43,5 @@ namespace Digital_Liberty.Models
         public string Profession { get; set; }
         public string Job { get; set; }
         public string Religion { get; set; }
-        public virtual ICollection<PersonIssue> PersonIssues { get; set; }
     }
 }

@@ -10,7 +10,8 @@ namespace Digital_Liberty.Models
         public int ID { get; set; }
         public string Description { get; set; }
         public string IssueType { get; set; }
-        public virtual ICollection<PersonIssue> PersonIssues { get; set; }
+        public string PersonID { get; set; }
+        public virtual Person Personas { get; set; }
 
     }
 }

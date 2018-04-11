@@ -35,7 +35,7 @@ export default class TotalActive extends React.Component {
     static renderChart(data) {
         return (
             <div className="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
-                <span className="count_top"><i className="fa fa-clock-o"></i>Activos</span>
+                <span className="count_top"><i className="fa fa-clock-o"></i>Beneficiarios Activos</span>
                 <div className="count green">{data}</div>
             </div>
         );

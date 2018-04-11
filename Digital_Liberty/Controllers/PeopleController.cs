@@ -54,14 +54,14 @@ namespace Digital_Liberty.Controllers
 
         // PUT: api/People/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPerson([FromRoute] int id, [FromBody] Person person)
+        public async Task<IActionResult> PutPerson([FromRoute] string document, [FromForm] Person person)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != person.ID)
+            if (document != person.Document)
             {
                 return BadRequest();
             }
@@ -74,7 +74,7 @@ namespace Digital_Liberty.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonExists(id))
+                if (!PersonExists(document))
                 {
                     return NotFound();
                 }
@@ -84,7 +84,7 @@ namespace Digital_Liberty.Controllers
                 }
             }
 
-            return NoContent();
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: api/People
@@ -123,9 +123,9 @@ namespace Digital_Liberty.Controllers
             return Ok(person);
         }
 
-        private bool PersonExists(int id)
+        private bool PersonExists(string document)
         {
-            return _context.Beneficiarios.Any(e => e.ID == id);
+            return _context.Beneficiarios.Any(e => e.Document == document);
         }
     }
 }

@@ -13,11 +13,8 @@ namespace Digital_Liberty.Models
 
         }
         public DbSet<Person> Beneficiarios { get; set; }
-        public DbSet<PersonEntry> BeneficiariosIngresos { get; set; }
         public DbSet<Entry> Ingresos { get; set; }
-        public DbSet<PersonSuspension> BeneficiariosSuspensiones { get; set; }
         public DbSet<Suspension> Suspensiones { get; set; }
-        public DbSet<PersonIssue> BeneficiariosProblemas { get; set; }
         public DbSet<Issue> Problemas { get; set; }
         public DbSet<User> Usuarios { get; set; }
 

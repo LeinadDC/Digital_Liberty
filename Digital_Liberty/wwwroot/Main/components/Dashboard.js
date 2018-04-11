@@ -20,18 +20,10 @@ export default class Dashboardx extends React.Component {
             <div>
                     <div className="row tile_count">
                         <TotalBeneficiaries />
-                        <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                         <TotalActive />
-                        </div>
-                        <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                         <TotalInactive />
-                        </div>
-                        <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                         <TotalMale />
-                        </div>
-                        <div className="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                         <TotalFemale /> 
-                        </div>
                     </div>
                         <div className="row">
                             <div className=" col-md-6 col-sm-12 col-xs-12">

@@ -10,6 +10,7 @@ namespace Digital_Liberty.Models
         public int ID { get; set; }
         public string Description { get; set; }
         public DateTime SuspensionDate { get; set; }
-        public virtual ICollection<PersonSuspension> PersonSuspension { get; set; }
+        public int PersonID { get; set; }
+        public virtual Person Personas { get; set; }
     }
 }

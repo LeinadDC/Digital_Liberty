@@ -35,7 +35,7 @@ export default class TotalInactive extends React.Component {
     static renderChart(data) {
         return (
             <div className="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
-                <span className="count_top"><i className="fa fa-user"></i>Inactivos</span>
+                <span className="count_top"><i className="fa fa-user"></i>Total Inactivos</span>
                 <div className="count red">{data}</div>
             </div>
         );

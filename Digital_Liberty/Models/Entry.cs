@@ -9,6 +9,7 @@ namespace Digital_Liberty.Models
     {
         public int ID { get; set; }
         public DateTime EntryDate { get; set; }
-        public virtual ICollection<PersonEntry> PersonEntry { get; set; }
+        public int PersonID { get; set; }
+        public virtual Person Personas { get; set; }
     }
 }
