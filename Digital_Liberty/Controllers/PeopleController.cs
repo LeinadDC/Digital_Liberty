@@ -45,6 +45,26 @@ namespace Digital_Liberty.Controllers
 
             return Ok(person);
         }
+
+        // GET: api/People/5
+        [HttpGet("issues/{id:int}")]
+        public async Task<IActionResult> GetPersonIssues([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var personIssues =  _context.Problemas.Where(m => m.PersonID == id);
+
+            if (personIssues == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(personIssues);
+        }
+
         // GET: api/People/5
         [HttpGet("[action]")]
         public async Task<IActionResult> Test()
