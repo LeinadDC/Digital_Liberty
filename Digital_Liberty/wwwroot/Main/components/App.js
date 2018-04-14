@@ -32,6 +32,7 @@ export default class App extends React.Component {
                             <div className="clearfix"></div>
                         </footer>
                     </div>
+  
             
         );
     }

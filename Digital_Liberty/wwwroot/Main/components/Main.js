@@ -13,9 +13,9 @@ export default class Main extends React.Component {
         return (
             <main>
                 <Switch>
-                    <Route exact path='/' component={Dashboard} />
+                    <Route exact path='/' component={Login} />
                     <Route path='/beneficiarios' component={List} />
-                    <Route path='/login' component={Login} />
+                    <Route path='/dashboard' component={Dashboard} />
                     <Route path="/edit/:document" component={Edit} />
                 </Switch>
             </main>);
