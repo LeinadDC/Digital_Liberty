@@ -9,7 +9,7 @@ export default class UserInfo extends React.Component {
                 </div>
                 <div className="profile_info">
                     <span>Bienvenido,</span>
-                    <h2>Casa Libertad</h2>
+                    <h2>Costa Rica Aprende</h2>
                 </div>
             </div>);
     }

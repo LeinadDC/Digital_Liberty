@@ -17,6 +17,7 @@ namespace Digital_Liberty.Models
         public DbSet<Suspension> Suspensiones { get; set; }
         public DbSet<Issue> Problemas { get; set; }
         public DbSet<User> Usuarios { get; set; }
+        public DbSet<Location> Lugares { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

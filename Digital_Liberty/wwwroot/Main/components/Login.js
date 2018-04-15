@@ -71,10 +71,10 @@ export default class Login extends React.Component {
                         </div>
                             </div>
                             <div className="form-group">
-                                <label className="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Contraseña <span className="required">*</span>
+                                <label className="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Password <span className="required">*</span>
                                 </label>
                                 <div className="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="last-name" name="contrasena" required="required" className="form-control col-md-7 col-xs-12" onChange={this.handleChange} />
+                                <input type="password" id="last-name" name="contrasena" required="required" className="form-control col-md-7 col-xs-12" onChange={this.handleChange} />
                         </div>
                                 </div>
                                                 <div className="ln_solid"></div>

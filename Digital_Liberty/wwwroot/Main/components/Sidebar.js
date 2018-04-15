@@ -6,7 +6,7 @@ export default class Sidebar extends React.Component {
         return (
             <div id="sidebar-menu" className="main_menu_side hidden-print main_menu">
                 <div className="menu_section">
-                    <h3>General</h3>
+                    <h3>Menu</h3>
                     <ul className="nav side-menu">
                          <li>
                             <Link to={'/dashboard'}>

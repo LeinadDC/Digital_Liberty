@@ -22,7 +22,8 @@ namespace Digital_Liberty.Models
         public bool HasGovernmentSubsidy {get;set;}
         public string IsActive { get; set; }
         public string LeavingReason { get; set; }
-        public string Location { get; set; }
+        public Location Location { get; set; }
+        public int LocationID { get; set; }
 
         /**
          * Esto permite tener varias fechas de ingreso y suspension.**/
