@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import ReactModal from 'react-modal';
+import { ReactModal } from 'react-bootstrap'
 import { Link, NavLink } from 'react-router-dom';
 
 
