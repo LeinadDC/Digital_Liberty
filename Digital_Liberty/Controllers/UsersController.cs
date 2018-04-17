@@ -10,6 +10,10 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Configuration;
 
 namespace Digital_Liberty.Controllers
 {
@@ -18,48 +22,56 @@ namespace Digital_Liberty.Controllers
     public class UsersController : Controller
     {
         private readonly DatabaseContext _context;
+        private IConfiguration _config;
 
-        public UsersController(DatabaseContext context)
+        public UsersController(DatabaseContext context, IConfiguration config)
         {
             _context = context;
+            _config = config;
         }
 
         //POST: LogIn
         [HttpPost("[action]")]
-        public async Task<IActionResult> LogIn([FromBody]User usuario)
+        public async Task<IActionResult> LogIn([FromBody]User user)
         {
+            IActionResult response = Unauthorized();
             if (ModelState.IsValid)
             {
-                User usuarioAutenticado = await ObtieneUsuarioBD(usuario);
+                User usuarioAutenticado = await ObtieneUsuarioBD(user);
 
                 if (usuarioAutenticado == null)
                 {
-                    return ErrorUsuario();
+                    return response;
                 }
 
-                bool isValid = ValidaUsuario(usuario, usuarioAutenticado);
+                bool isValid = ValidaUsuario(user, usuarioAutenticado);
 
                 if (!isValid)
                 {
-                    return ErrorUsuario();
+                    return response;
                 }
 
-                ClaimsIdentity identity = CreaIdentidadUsuario(usuarioAutenticado);
+                var tokenString = BuildToken(user);
 
-                await AutenticaIdentidad(identity);
-
-                return RedirectToAction("Index", "Home");
+                response = Ok(new { token = tokenString });
             }
 
-            return View();
+            return response;
 
         }
-
-        private IActionResult ErrorUsuario()
+        private string BuildToken(User user)
         {
-            ModelState.AddModelError("", "El usuario o la contraseña son incorrectos.");
-            return View();
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
+              _config["Jwt:Issuer"],
+              expires: DateTime.Now.AddMinutes(30),
+              signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
 
         private async Task<User> ObtieneUsuarioBD(User usuario)
         {
@@ -73,28 +85,6 @@ namespace Digital_Liberty.Controllers
             return (usuario.NombreUsuario == usuarioAutenticado.NombreUsuario && usuario.Password == usuarioAutenticado.Password);
         }
 
-        private static ClaimsIdentity CreaIdentidadUsuario(User usuarioAutenticado)
-        {
-            // Creamos Identity basada en la información del usuario. 
-            var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
-            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, usuarioAutenticado.NombreUsuario));
-            identity.AddClaim(new Claim(ClaimTypes.Country, usuarioAutenticado.Tienda));
-            return identity;
-        }
-
-        private async Task AutenticaIdentidad(ClaimsIdentity identity)
-        {
-            // Autenticamos usando Identity
-            var principal = new ClaimsPrincipal(identity);
-            await HttpContext.SignInAsync(
-                 CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(identity),
-                    new Microsoft.AspNetCore.Authentication.AuthenticationProperties
-                    {
-                        IsPersistent = true,
-                        ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
-                    });
-        }
 
         // GET: api/Users/5
         [HttpGet("{id}")]

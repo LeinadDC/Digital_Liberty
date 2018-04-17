@@ -7,17 +7,20 @@ export default class DetailModal extends React.Component {
     constructor() {
         super();
         this.state = {
+            user: {},
+            location: 'Default',
             showModal: true,
-            issues: {}
+            issues: {},
         };
 
-     
+
         this.handleCloseModal = this.handleCloseModal.bind(this);
     }
 
 
 
     componentDidMount() {
+        this.setState({ user: this.props.state });
         ReactModal.setAppElement('#modalTest');
     }
 
@@ -27,38 +30,50 @@ export default class DetailModal extends React.Component {
     }
 
     render() {
-        const user = this.props.user;
+        let contents = this.props.loadingModal ? <p><em>Loading...</em></p>
+            : DetailModal.renderModal(this.props.user, this.props.showModal, this.props.issues, this.props.action);
+
+        return (<div>
+            {contents}
+        </div>);
+
+    }
+
+
+    static renderModal(user, show, issues, action) {
         return (
             <div>
                 <ReactModal
-                    isOpen={this.props.showModal}
+                    isOpen={show}
                     contentLabel="Minimal Modal Example"
                     style={{
                         content: {
-                        marginLeft:'300px',
-                         }
+                            marginLeft: '250px',
+                        }
                     }}>
-                    <h1>{user.document}</h1>
+                    <h1>{user.firstName}</h1>
                     <ul>
                         <li>Nombre: {user.firstName}</li>
+                        <li>Localidad: {user.location.name}</li>
                         <li>Test</li>
                         <li>Test</li>
                         <li>Test</li>
 
                         <ul>
-                            {this.props.issues.map(issue =>
+                            {issues.map(issue =>
                                 <li key={issue.id}>
                                     {issue.issueType}
                                 </li>
                             )}
                         </ul>
                     </ul>
-                    <button onClick={this.props.action}>Cerrar</button>
-                    <Link to={`/edit/${this.props.user.document}`}>
+                    <button onClick={action}>Cerrar</button>
+                    <Link to={`/edit/${user.document}`}>
                         <button>Editar</button>
                     </Link>
                 </ReactModal>
-            </div>
-        );
+            </div>);
     }
+
+
 }

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Digital_Liberty.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Digital_Liberty.Controllers
 {
@@ -22,13 +24,16 @@ namespace Digital_Liberty.Controllers
 
         // GET: api/People/Act
         [HttpGet("[action]")]
+   
         public IEnumerable<Person> GetBeneficiarios()
         {
-            return _context.Beneficiarios;
+            var tienda = HttpContext.User;
+            return _context.Beneficiarios.Include(m => m.Location);
         }
 
         // GET: api/People/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetPerson([FromRoute] string id)
         {
             if (!ModelState.IsValid)
@@ -36,7 +41,7 @@ namespace Digital_Liberty.Controllers
                 return BadRequest(ModelState);
             }
 
-            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.Document == id);
+            var person =  _context.Beneficiarios.Include(m => m.Location).FirstOrDefault(m => m.Document == id);
 
             if (person == null)
             {
