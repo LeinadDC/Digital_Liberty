@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Digital_Liberty.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Digital_Liberty.Controllers
 {
+    
     [Produces("application/json")]
     [Route("api/Chart")]
     public class ChartController : Controller

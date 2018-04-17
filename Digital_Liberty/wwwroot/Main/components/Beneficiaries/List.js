@@ -7,7 +7,7 @@ export default class List extends React.Component {
     constructor() {
         super();
         this.state = {
-            beneficiaries: [], loading: true, detalles: false, document: 'empty', user: {}
+            beneficiaries: [], loading: true, detalles: false, document: 'empty', user: {}, issues: []
         };
         this.handler = this.handler.bind(this);
     }
@@ -51,6 +51,13 @@ export default class List extends React.Component {
                     .then(data => {
                         this.setState({ detalles: true, document: row.document, user: data });
                     });
+
+                const otherFetch = 'api/People/issues/' + row.id;
+                fetch(otherFetch)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.setState({ issues: data });
+                    });
             }
         };
 
@@ -58,7 +65,7 @@ export default class List extends React.Component {
             : List.renderTable(this.state.beneficiaries, columns, rowEvents);
 
         return (<div>
-            <DetailModal user={this.state.user} showModal={this.state.detalles} action={this.handler} />
+            <DetailModal user={this.state.user} showModal={this.state.detalles} action={this.handler} issues={this.state.issues} />
             <h1>Lista Beneficiarios</h1>
             {contents}
         </div>);

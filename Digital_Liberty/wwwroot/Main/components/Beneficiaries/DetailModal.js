@@ -7,7 +7,8 @@ export default class DetailModal extends React.Component {
     constructor() {
         super();
         this.state = {
-            showModal: true
+            showModal: true,
+            issues: {}
         };
 
      
@@ -26,9 +27,9 @@ export default class DetailModal extends React.Component {
     }
 
     render() {
+        const user = this.props.user;
         return (
             <div>
-               
                 <ReactModal
                     isOpen={this.props.showModal}
                     contentLabel="Minimal Modal Example"
@@ -37,8 +38,22 @@ export default class DetailModal extends React.Component {
                         marginLeft:'300px',
                          }
                     }}>
-                    <h1>{this.props.user.document}</h1>
-                    <button onClick={this.props.action}>Close Modal</button>
+                    <h1>{user.document}</h1>
+                    <ul>
+                        <li>Nombre: {user.firstName}</li>
+                        <li>Test</li>
+                        <li>Test</li>
+                        <li>Test</li>
+
+                        <ul>
+                            {this.props.issues.map(issue =>
+                                <li key={issue.id}>
+                                    {issue.issueType}
+                                </li>
+                            )}
+                        </ul>
+                    </ul>
+                    <button onClick={this.props.action}>Cerrar</button>
                     <Link to={`/edit/${this.props.user.document}`}>
                         <button>Editar</button>
                     </Link>

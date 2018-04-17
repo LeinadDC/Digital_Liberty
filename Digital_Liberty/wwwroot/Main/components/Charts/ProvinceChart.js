@@ -2,7 +2,7 @@
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Brush, Legend,
     ReferenceArea, ReferenceLine, ReferenceDot, ResponsiveContainer,
-    LabelList, Label
+    LabelList, Label, LineChart,Line
 } from 'recharts';
 
 export default class ProvinceChart extends React.Component {
@@ -36,7 +36,7 @@ export default class ProvinceChart extends React.Component {
         return (
             <div className="x_panel tile fixed_height_320">
                 <div className="x_title">
-                    <h2>Estado civil</h2>
+                    <h2>Provincia Origen</h2>
                     <ul className="nav navbar-right panel_toolbox">
                         <li><a className="collapse-link"><i className="fa fa-chevron-up"></i></a>
                         </li>
@@ -46,17 +46,16 @@ export default class ProvinceChart extends React.Component {
                     <div className="clearfix"></div>
                 </div>
                 <div className="x_content">
-                    <div style={{ width: '600px', height: '300px' }}>
-                        <ResponsiveContainer width="80%" height="80%">
-                            <BarChart data={data}
-                                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <div style={{ width: '1200px', height: '300px' }}>
+                        <ResponsiveContainer width="100%" height="80%">
+                            <LineChart data={data}
+                                margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+                                <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="name" />
                                 <YAxis />
-                                <CartesianGrid strokeDasharray="3 3" />
                                 <Tooltip />
-                                <Legend />
-                                <Bar dataKey="count" fill="#8884d8" />
-                            </BarChart>
+                                <Line connectNulls={true} type='monotone' dataKey='count' stroke='#8884d8' fill='#8884d8' />
+                            </LineChart>
                         </ResponsiveContainer>
                     </div >
                 </div>

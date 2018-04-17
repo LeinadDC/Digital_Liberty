@@ -36,7 +36,7 @@ export default class WorkChart extends React.Component {
         return (
             <div className="x_panel tile fixed_height_320">
                 <div className="x_title">
-                    <h2>Estado civil</h2>
+                    <h2>Trabajo</h2>
                     <ul className="nav navbar-right panel_toolbox">
                         <li><a className="collapse-link"><i className="fa fa-chevron-up"></i></a>
                         </li>

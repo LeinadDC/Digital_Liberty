@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Serialization;
 using Digital_Liberty.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Digital_Liberty
 {
@@ -34,6 +35,13 @@ namespace Digital_Liberty
             services.AddMvc();
              services.AddDbContext<DatabaseContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSession();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.AccessDeniedPath = "/Home/Prohibido";
+        options.LoginPath = "/";
+    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,8 +55,10 @@ namespace Digital_Liberty
                     HotModuleReplacement = true
                 });
             }
-              
+            app.UseAuthentication();
             app.UseStaticFiles();
+            app.UseSession();
+            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {

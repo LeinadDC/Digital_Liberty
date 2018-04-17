@@ -11,9 +11,10 @@ using System;
 namespace Digital_Liberty.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180415164931_Location on model")]
+    partial class Locationonmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,18 +55,6 @@ namespace Digital_Liberty.Migrations
                     b.ToTable("Problemas");
                 });
 
-            modelBuilder.Entity("Digital_Liberty.Models.Location", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Lugares");
-                });
-
             modelBuilder.Entity("Digital_Liberty.Models.Person", b =>
                 {
                     b.Property<int>("ID")
@@ -99,7 +88,7 @@ namespace Digital_Liberty.Migrations
 
                     b.Property<string>("LeavingReason");
 
-                    b.Property<int>("LocationID");
+                    b.Property<string>("Location");
 
                     b.Property<string>("Nationality");
 
@@ -114,8 +103,6 @@ namespace Digital_Liberty.Migrations
                     b.Property<string>("Religion");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("LocationID");
 
                     b.ToTable("Beneficiarios");
                 });
@@ -167,14 +154,6 @@ namespace Digital_Liberty.Migrations
                     b.HasOne("Digital_Liberty.Models.Person")
                         .WithMany("Issues")
                         .HasForeignKey("PersonID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Digital_Liberty.Models.Person", b =>
-                {
-                    b.HasOne("Digital_Liberty.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
