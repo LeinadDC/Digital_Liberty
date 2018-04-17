@@ -1,40 +1,9 @@
-﻿import React from 'react';
-
-export default class Edit extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: {}
-        };
-    }
-
-    componentDidMount() {
-        const { match: { params } } = this.props;
-
-        const fetchUrl = '/api/People/' + params.document;
-        fetch(fetchUrl)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ user: data });
-            });
-    }
-
-
+﻿import React from 'react'
+export default class CrearBeneficiario extends React.Component {
     render() {
-        const { user } = this.state;
-
         return (
             <form class="form-horizontal form-label-left" novalidate>
-                <span class="section">Editar beneficiario</span>
-
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group top_search" align="center">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Documento de identidad..."/>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Buscar</button>
-                            </span>
-                    </div>
-                </div>
+                <span class="section">Crear nuevo beneficiario</span>
 
                 <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre: <span class="required">*</span>
@@ -247,40 +216,41 @@ export default class Edit extends React.Component {
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="religion">Addiciones (marque todas las que apliquen): <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <label class="container">Alcohol &nbsp;
-                      <input type="checkbox" id="alcohol" checked="checked" />
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Crack &nbsp;
-                      <input type="checkbox" id="crack" />
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Cocaina &nbsp;
-                      <input type="checkbox" id="cocaina" />
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Marihuana &nbsp;
-                      <input type="checkbox" id="weed" />
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Tabaco &nbsp;
+                    <label class="container">Alcohol &nbsp;
+                      <input type="checkbox" id="alcohol" checked="checked"/>
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Crack &nbsp;
+                      <input type="checkbox" id="crack"/>
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Cocaina &nbsp;
+                      <input type="checkbox" id="cocaina"/>
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Marihuana &nbsp;
+                      <input type="checkbox" id="weed"/>
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Tabaco &nbsp;
                       <input type="checkbox" id="tabaco" />
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Otra droga &nbsp;
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Otra droga &nbsp;
                       <input type="checkbox" id="otherDrug" />
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                        <span class="checkmark"></span>
+                    </label>
+                   </div>
                 </div>
 
                 <div class="ln_solid"></div>
-                <div class="form-group">
-                    <div class="col-md-6 col-md-offset-3">
-                        <button type="submit" class="btn btn-primary">Cancelar</button>
-                        <button id="send" type="submit" class="btn btn-success">Crear</button>
-                    </div>
-                </div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+
             </form>
         );
     }
