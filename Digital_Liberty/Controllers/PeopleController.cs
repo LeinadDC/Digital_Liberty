@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Digital_Liberty.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/People")]
     public class PeopleController : Controller
@@ -24,7 +25,6 @@ namespace Digital_Liberty.Controllers
 
         // GET: api/People/Act
         [HttpGet("[action]")]
-   
         public IEnumerable<Person> GetBeneficiarios()
         {
             var tienda = HttpContext.User;
@@ -33,7 +33,6 @@ namespace Digital_Liberty.Controllers
 
         // GET: api/People/5
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<IActionResult> GetPerson([FromRoute] string id)
         {
             if (!ModelState.IsValid)
@@ -68,13 +67,6 @@ namespace Digital_Liberty.Controllers
             }
 
             return Ok(personIssues);
-        }
-
-        // GET: api/People/5
-        [HttpGet("[action]")]
-        public async Task<IActionResult> Test()
-        {
-            return View();
         }
 
         // PUT: api/People/5
@@ -128,15 +120,16 @@ namespace Digital_Liberty.Controllers
         }
 
         // DELETE: api/People/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePerson([FromRoute] int id)
+
+        [HttpDelete("{document}")]
+        public async Task<IActionResult> DeletePerson([FromRoute] string document)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.ID == id);
+            var person = await _context.Beneficiarios.SingleOrDefaultAsync(m => m.Document == document);
             if (person == null)
             {
                 return NotFound();

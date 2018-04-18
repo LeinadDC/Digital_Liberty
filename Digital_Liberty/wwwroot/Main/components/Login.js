@@ -16,7 +16,7 @@ export default class Login extends React.Component {
 
   handleChange(event){
     this.setState({
-        [event.target.name]: event.target.value,
+        [event.target.name]: event.target.value
     });
   }
 
@@ -30,12 +30,12 @@ export default class Login extends React.Component {
               method: 'post',
               headers: {
                   'Content-Type': 'application/json',
-                  'Accept': 'application/json',
+                  'Accept': 'application/json'
               },
               body: JSON.stringify(payload)
           }).then(response => response.json())
           .then(data => {
-              localStorage.setItem('token', data.token);
+              sessionStorage.setItem('token', data.token);
               this.props.history.push('/dashboard'); 
           });
   }
@@ -62,14 +62,14 @@ export default class Login extends React.Component {
                     <form id="demo-form2" onSubmit={this.handleSubmit} className="form-horizontal form-label-left">
 
                         <div className="form-group">
-                            <label className="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Usuario <span className="required">*</span>
+                            <label className="control-label col-md-3 col-sm-3 col-xs-12">Usuario <span className="required">*</span>
                             </label>
                             <div className="col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" id="first-name" required="required" className="form-control col-md-7 col-xs-12" name="usuario" onChange={this.handleChange} />
                         </div>
                             </div>
                             <div className="form-group">
-                                <label className="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Password <span className="required">*</span>
+                                <label className="control-label col-md-3 col-sm-3 col-xs-12">Password <span className="required">*</span>
                                 </label>
                                 <div className="col-md-6 col-sm-6 col-xs-12">
                                 <input type="password" id="last-name" name="contrasena" required="required" className="form-control col-md-7 col-xs-12" onChange={this.handleChange} />

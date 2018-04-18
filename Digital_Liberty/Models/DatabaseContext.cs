@@ -21,7 +21,7 @@ namespace Digital_Liberty.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=ORLANDO\\SQLEXPRESS;Initial Catalog=CasaLibertad;Integrated Security=False;User ID=casa1;Password=casa123;Connect Timeout=30;");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-2BILSPB;Initial Catalog=CasaLibertad;Integrated Security=False;User ID=casa;Password=casa123;Connect Timeout=30;");
         }
     }
 }
