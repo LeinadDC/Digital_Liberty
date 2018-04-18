@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 
-export default class Edit extends React.Component {
+export default class EditBeneficiarie extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -48,7 +48,7 @@ export default class Edit extends React.Component {
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastName">Apellido: <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="apellido" class="form-control col-md-7 col-xs-12" name="apellido" required="required" type="text" />
+                        <input id="apellido" class="form-control col-md-7 col-xs-12" name="apellido" required="required" type="text" value={this.state.}/>
                     </div>
                 </div>
 

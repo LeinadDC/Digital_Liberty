@@ -19,7 +19,7 @@ export default class Sidebar extends React.Component {
                             </Link>
                          </li>
                          <li>
-                             <Link to={'/create'}>
+                             <Link to={'/createBenef'}>
                                  <a style={{ color: 'white' }}><i className="fa fa-edit"></i>Agregar beneficiario</a>
                              </Link>
                          </li>

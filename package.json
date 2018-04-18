@@ -6,11 +6,17 @@
   "dependencies": {
     "antd": "^3.4.1",
     "bootstrap": "^4.1.0",
+    "jquery": "^3.3.1",
+    "moment": "^2.22.1",
+    "npm": "^5.8.0",
+    "popper.js": "^1.14.3",
     "react": "^16.3.1",
     "react-bootstrap-table-next": "^0.1.7",
+    "react-bootstrap-table2-filter": "^0.1.6",
     "react-bootstrap-validation": "^0.1.11",
     "react-dom": "^16.3.1",
-    "react-responsive-modal": "^2.0.1"
+    "react-responsive-modal": "^2.0.1",
+    "react-skycons": "^0.7.0"
   },
   "devDependencies": {},
   "scripts": {
