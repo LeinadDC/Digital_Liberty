@@ -33,6 +33,11 @@ export default class Sidebar extends React.Component {
                                  <a style={{ color: 'white' }}><i className="fa fa-table"></i>Lista de beneficiarios</a>
                              </Link>
                          </li>
+                         <li>
+                            <Link to={'/lugares/lista'}>
+                                 <a style={{ color: 'white' }}><i className="fa fa-table"></i>Lista de lugares</a>
+                             </Link>
+                         </li>
                     </ul>
                 </div>
              </div>);

@@ -33,12 +33,10 @@ export default class Login extends React.Component {
                   'Accept': 'application/json',
               },
               body: JSON.stringify(payload)
-          }).then(response => {
-              if (!response.is_error) {
-                  this.props.history.push('/dashboard');
-              } else {
-                  this.setState({ error: response.error_content.error_description });
-              }
+          }).then(response => response.json())
+          .then(data => {
+              localStorage.setItem('token', data.token);
+              this.props.history.push('/dashboard'); 
           });
   }
 

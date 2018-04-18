@@ -4,10 +4,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractCSS = new ExtractTextPlugin('site.css');
 
 module.exports = {
-    entry: { 'main': './wwwroot/Main/index.js' },
+    entry: {
+        'main': './wwwroot/Main/index.js',
+        'public': './wwwroot/Main/public.js'},
     output: {
         path: path.resolve(__dirname, './wwwroot/dist'),
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: 'dist/'
     },
     plugins: [

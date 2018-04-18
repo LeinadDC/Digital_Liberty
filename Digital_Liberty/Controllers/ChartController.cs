@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Digital_Liberty.Controllers
 {
-    
+  
     [Produces("application/json")]
     [Route("api/Chart")]
     public class ChartController : Controller
