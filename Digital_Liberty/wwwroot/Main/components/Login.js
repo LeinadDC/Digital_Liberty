@@ -22,7 +22,7 @@ export default class Login extends React.Component {
 
   handleSubmit(event) {
       var payload = {
-          NombreUsuario: this.state.usuario,
+      NombreUsuario: this.state.usuario,
       Password: this.state.contrasena}
       event.preventDefault();
       fetch('api/Users/LogIn',
