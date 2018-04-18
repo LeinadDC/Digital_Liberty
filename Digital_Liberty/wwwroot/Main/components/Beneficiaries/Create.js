@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import LocationList from './Locations/LocationList'
 
 export default class Create extends React.Component {
 
@@ -24,10 +25,15 @@ export default class Create extends React.Component {
             job: '',
             reffered : '',
             religion: '',
+            location:'',
             error: {}
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    getInitialState() {
+        return { selectValue: 'otherDrug'}
     }
 
     handleChange(event) {
@@ -79,7 +85,9 @@ export default class Create extends React.Component {
             Profession: this.state.profesion,
             Province : this.state.province,
             Referred: this.state.reffered,
-            Religion : this.state.religion
+            Religion: this.state.religion,
+            Location: this.state.location,
+            selectValue : this.state.value
         }
         event.preventDefault();
         fetch('api/People',
@@ -207,6 +215,8 @@ export default class Create extends React.Component {
                     </p>
                 </div>
 
+                <div id="react-search"></div>
+
                 <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="civilStatus">Estado civil: <span class="required">*</span>
                     </label>
@@ -325,33 +335,38 @@ export default class Create extends React.Component {
                 </div>
 
                 <div class="item form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adicciones">Addiciones (marque todas las que apliquen): <span class="required">*</span>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="religion">Addiciones (marque todas las que apliquen): <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <label class="container">Alcohol &nbsp;
-                      <input type="checkbox" id="alcohol" checked="checked" onChange={this.handleChange} />
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Crack &nbsp;
-                      <input type="checkbox" id="crack" onChange={this.handleChange}/>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Cocaina &nbsp;
-                      <input type="checkbox" id="cocaina" onChange={this.handleChange}/>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Marihuana &nbsp;
-                      <input type="checkbox" id="weed" onChange={this.handleChange} />
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Tabaco &nbsp;
-                      <input type="checkbox" id="tabaco" onChange={this.handleChange}/>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Otra droga &nbsp;
-                      <input type="checkbox" id="otherDrug" onChange={this.handleChange}/>
-                            <span class="checkmark"></span>
-                        </label>
+                        <select
+                            value={this.state.selectValue}
+                            onChange={this.handleChange}
+                        >
+                            <label class="container">Alcohol &nbsp;
+                      <input type="checkbox" value="alcohol" checked="checked" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Crack &nbsp;
+                      <input type="checkbox" value="crack" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Cocaina &nbsp;
+                      <input type="checkbox" value="cocaina" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Marihuana &nbsp;
+                      <input type="checkbox" value="weed" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Tabaco &nbsp;
+                      <input type="checkbox" value="tabaco" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">Otra droga &nbsp;
+                      <input type="checkbox" value="otherDrug" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </select>
                     </div>
                 </div>
 

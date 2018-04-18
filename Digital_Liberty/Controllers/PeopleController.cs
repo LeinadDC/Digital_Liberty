@@ -122,6 +122,7 @@ namespace Digital_Liberty.Controllers
             }
 
             //agregar loop aqui agregar un registro a la tabla Problemas 
+
             _context.Beneficiarios.Add(person);
             await _context.SaveChangesAsync();
 
