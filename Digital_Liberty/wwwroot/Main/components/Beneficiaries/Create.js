@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import LocationList from './Locations/LocationList'
+import LocationList from '../Locations/LocationList'
 
 export default class Create extends React.Component {
 

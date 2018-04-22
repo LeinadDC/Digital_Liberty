@@ -32,9 +32,9 @@ export default class EditBeneficiarie extends React.Component {
     }
 
     componentDidMount() {
-        const user;
+        const user = this.props.user;
 
-        const fetchUrl = '/api/People/' + params.document;
+        const fetchUrl = '/api/People/' + user.document;
         fetch(fetchUrl)
             .then(response => response.json())
             .then(data => {
@@ -96,7 +96,7 @@ export default class EditBeneficiarie extends React.Component {
             Province : this.state.province,
             Referred: this.state.reffered,
             Religion: this.state.religion,
-            Location:this.state.location
+            Location:this.state.location,
             selectValue : this.state.value
         }
         event.preventDefault();
@@ -162,7 +162,7 @@ export default class EditBeneficiarie extends React.Component {
                     </div>
                 </div>
 
-                <div class="item form-group" this.setGender.bind(this)} >
+                <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">Género <span class="required">*</span>
                     </label>
                     <p>
